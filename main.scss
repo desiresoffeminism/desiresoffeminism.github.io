@@ -61,6 +61,13 @@ h6 {
             font-family: $font-header;
             font-size: 1.5rem;
             font-weight: 600;
+            color: $bg;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: $accent;
+            }
         }
 
         &>li {
@@ -70,13 +77,6 @@ h6 {
             .menu-icon {
                 position: absolute;
                 left: 12px;
-                color: $bg;
-
-                &:hover,
-                &:active,
-                &:focus {
-                    color: $accent;
-                }
             }
 
             &:hover,
@@ -88,6 +88,17 @@ h6 {
 
                 background-color: $mid4;
                 cursor: pointer;
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: $bg;
+
+            &:hover,
+            &:active,
+            &:focus {
+                color: $accent;
             }
         }
     }
@@ -105,7 +116,7 @@ h6 {
     overflow: hidden;
 
     list-style-type: none;
-    background-color: lighten($mid2, 5);
+    background-color: $mid4;
     transition: all 0.3s ease-in-out;
 
     li {
@@ -114,7 +125,11 @@ h6 {
         &:hover,
         &:active,
         &:focus {
-            background-color: lighten($mid2, 9);
+            background-color: darken($mid4, 4);
+            
+            a {
+                color: $accent
+            }
         }
     }
 }
