@@ -9,6 +9,14 @@
 <html>
 
 <head>
+    <!-------- 
+        
+        CREDITS: 
+        - feathericons by Cole Bemis
+        - sidebar menu inspired by John Ambas
+
+    -------->
+
     <!-------- FONTS -------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,41 +26,51 @@
 
     <!-------- OTHER LINKS -------->
     <link type="text/css" rel="stylesheet" href="main.css">
+
+    <!-------- SCRIPTS -------->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-------- SITE STYLING -------->
+    <title>Desires of Feminism</title>
+    <!-- <link rel="shortcut icon" href="favicon.png"> -->
 </head>
 
 <body>
-    <!--------
-        The code in this section was inspired by Erik Terwan
-        24th of November 2015 under the MIT License
-    -------->
-    <nav role="navigation">
-        <div id="main-menu">
-            <div id="menu-toggle">
-                <input type="checkbox" />
-                <!-- burger spans -->
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul id="menu">
-                    <a href="#">
-                        <li>Home</li>
-                    </a>
-                    <a href="/about">
-                        <li>About</li>
-                    </a>
-                    <a href="/citations">
-                        <li>Citations</li>
-                    </a>
-                    <a href="/contribute">
-                        <li>Contribute</li>
-                    </a>
-                    <a href="https://github.com/desiresoffeminism/desiresoffeminism.github.io">
-                        <li>GitHub</li>
-                    </a>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <header>
+        <!--------
+            The code in this section was inspired by John Ambas
+        -------->
+        <nav class="sidenav">
+            <ul class="main-buttons">
+                <li>
+                    <i data-feather="menu" class="menu-icon"></i>
+                    Menu
+                    <ul class="hidden">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/citations">Citations</a></li>
+                        <li><a href="/contribute">Contribute</a></li>
+                        <li><a href="https://github.com/desiresoffeminism/desiresoffeminism.github.io">GitHub</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <i data-feather="filter" class="menu-icon"></i>
+                    Filter
+                    <ul class="hidden">
+                        <li>Time Range</li>
+                        <li>Location</li>
+                        <li>People</li>
+                        <li>Topic</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- sets feather icons -->
+    <script>
+        feather.replace()
+    </script>
 </body>
 
 </html>
