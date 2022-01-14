@@ -16,11 +16,15 @@ $.getJSON("data/timeline.json", function (data) {
 
     var listItemTitle = $(".title", listItem);
     listItemTitle.html(item.title);
+
+    // show end date only if it exists
     var listItemDate = $(".date", listItem);
-    // TODO: Clean up display of dates
-    // e.g. only year if ?? is found past a /,
-    // not displaying " - " if no end date
-    listItemDate.html(item.main_date + " - " + item.end_date);
+    if (item.end_date) {
+      listItemDate.html(item.main_date + " - " + item.end_date);
+    } else {
+      listItemDate.html(item.main_date);
+    }
+
     var listItemDesc = $(".description", listItem);
     listItemDesc.html(item.description);
     var listItemCountry = $(".country", listItem);
