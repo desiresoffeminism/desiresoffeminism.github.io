@@ -13,7 +13,7 @@ $.getJSON("data/timeline.json", function (data) {
   // filling in item info from JSON data
   function buildNewList(item) {
     // adds the item's weight as a class to the div for better selection
-    var listItem = $("<div class=\"" + item.weight + "\">" + listItemString + "</div>");
+    var listItem = $("<div class=\"dataItem " + item.weight + "\">" + listItemString + "</div>");
 
     var listItemTitle = $(".title", listItem);
     listItemTitle.html(item.title);

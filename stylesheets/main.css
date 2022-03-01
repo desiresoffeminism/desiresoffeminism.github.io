@@ -103,8 +103,17 @@ body {
 
 /* ---- TIMELINE STYLING ---- */
 #timeline {
+  height: 100vh;
   position: relative;
   margin: 0px auto 20px 280px;
+  overflow: auto;
+  white-space: nowrap;
+}
+#timeline #dataList {
+  display: flex;
+}
+#timeline .dataItem {
+  margin: 1rem;
 }
 #timeline p {
   margin: 0;
@@ -112,16 +121,6 @@ body {
 
 /* ---- BROWSER-SPECIFIC ADJUSTMENTS ---- */
 /* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-  display: none;
-}
-
 /* Hide scrollbar for IE, Edge and Firefox */
-body {
-  /* IE and Edge */
-  -ms-overflow-style: none;
-  /* Firefox */
-  scrollbar-width: none;
-}
 
 /*# sourceMappingURL=main.css.map */

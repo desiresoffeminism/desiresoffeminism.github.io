@@ -162,8 +162,19 @@ body {
 
 /* ---- TIMELINE STYLING ---- */
 #timeline {
+    height: 100vh;
     position: relative;
     margin: 0px auto 20px 280px;
+    overflow: auto;
+    white-space: nowrap;
+
+    #dataList {
+        display: flex;
+    }
+
+    .dataItem {
+        margin: 1rem;
+    }
 
     // REMOVE LATER
     p {
@@ -173,14 +184,14 @@ body {
 
 /* ---- BROWSER-SPECIFIC ADJUSTMENTS ---- */
 /* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-    display: none;
-}
+// body::-webkit-scrollbar {
+//     display: none;
+// }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-body {
-    /* IE and Edge */
-    -ms-overflow-style: none;
-    /* Firefox */
-    scrollbar-width: none;
-}
+// body {
+//     /* IE and Edge */
+//     -ms-overflow-style: none;
+//     /* Firefox */
+//     scrollbar-width: none;
+// }
