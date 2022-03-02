@@ -23,6 +23,22 @@ h6 {
   font-family: "Crimson Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e9ebf8;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: #775fe3;
+}
+
 /* ---- MAIN NAV MENU ---- */
 .sidenav {
   position: fixed;
@@ -105,8 +121,9 @@ body {
 #timeline {
   height: 100vh;
   position: relative;
-  margin: 0px auto 20px 280px;
-  overflow: auto;
+  margin-left: 280px;
+  overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
 }
 #timeline #dataList {

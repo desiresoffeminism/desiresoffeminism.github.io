@@ -41,3 +41,10 @@ $.getJSON("data/timeline.json", function (data) {
   }
 });
 // Section end
+
+const scrollContainer = document.getElementById("timeline");
+
+scrollContainer.addEventListener("wheel", (evt) => {
+  evt.preventDefault();
+  scrollContainer.scrollLeft += evt.deltaY;
+});

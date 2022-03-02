@@ -59,6 +59,25 @@ h6 {
     font-family: $font-header;
 }
 
+// SCROLLBAR
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: $fg;
+}
+
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: $accent;
+    // border-top: 3px solid $bg;
+}
+
 /* ---- MAIN NAV MENU ---- */
 .sidenav {
     position: fixed;
@@ -164,8 +183,9 @@ body {
 #timeline {
     height: 100vh;
     position: relative;
-    margin: 0px auto 20px 280px;
-    overflow: auto;
+    margin-left: 280px;
+    overflow-x: scroll;
+    overflow-y: hidden;
     white-space: nowrap;
 
     #dataList {
