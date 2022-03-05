@@ -59,6 +59,11 @@ h6 {
     font-family: $font-header;
 }
 
+::selection {
+    background: $accent;
+    color: $fg;
+}
+
 // SCROLLBAR
 ::-webkit-scrollbar {
     width: 0px;
@@ -179,17 +184,35 @@ body {
     height: 100%;
 }
 
+#logo-menu {
+    position: fixed;
+    padding: 16px 12px;
+    width: 32px;
+
+    a {
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $accent;
+        }
+    }
+
+}
+
 /* ---- TIMELINE STYLING ---- */
 #timeline {
     height: 100vh;
     position: relative;
-    margin-left: 280px;
+    margin-left: $width;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 
     #dataList {
         display: flex;
+        position: relative;
+        top: 50%;
     }
 
     .dataItem {
@@ -200,6 +223,15 @@ body {
     p {
         margin: 0;
     }
+}
+
+.timeline-line {
+    display: block;
+    position: absolute;
+    top: 50%;
+    height: 4px;
+    width: 100%;
+    background: $mid2;
 }
 
 /* ---- BROWSER-SPECIFIC ADJUSTMENTS ---- */

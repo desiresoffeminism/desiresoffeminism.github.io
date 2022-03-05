@@ -27,6 +27,8 @@
 
     <!-------- OTHER LINKS -------->
     <link type="text/css" rel="stylesheet" href="stylesheets/main.css">
+    <!-- TODO: update this with finalized logo -->
+    <link type="image/x-icon" rel="icon" href="media/branding/logo_favicon.png">
 
     <!-------- SCRIPTS -------->
     <script src="https://unpkg.com/feather-icons"></script>
@@ -37,11 +39,17 @@
 </head>
 
 <body>
+    <!-- BASE STYLING -->
+    <div class="timeline-line"></div>
+
+    <!-- NAV -->
     <header>
         <!--------
             The code in this section was inspired by Jon Ambas
         -------->
         <nav class="sidenav">
+            <!-- TODO: replace with svg -->
+            <a href="#"><img id="logo-menu" src="/media/branding/logo_purple.svg" alt="project logo"></a>
             <ul class="main-buttons">
                 <li>
                     <i data-feather="menu" class="menu-icon"></i>
@@ -78,25 +86,27 @@
         </nav>
     </header>
 
-    <section id="timeline">
-        <div id="dataList"></div>
-        <div class="templates">
-            <div id="listItem">
-                <div class="row1">
-                    <div class="title"></div>
-                    <div class="date"></div>
-                </div>
-                <div class="row2">
-                    <div class="description"></div>
-                </div>
-                <div class="row3">
-                    <div class="expand-info">
-                        <div class="country"></div>
-                        <div class="people"></div>
-                        <div class="topic"></div>
+    <section>
+        <div id="timeline">
+            <div id="dataList"></div>
+            <div class="templates">
+                <div id="listItem">
+                    <div class="row1">
+                        <div class="title"></div>
+                        <div class="date"></div>
                     </div>
-                    <div class="expand-citation">
-                        <div class="citation"></div>
+                    <div class="row2">
+                        <div class="description"></div>
+                    </div>
+                    <div class="row3">
+                        <div class="expand-info">
+                            <div class="country"></div>
+                            <div class="people"></div>
+                            <div class="topic"></div>
+                        </div>
+                        <div class="expand-citation">
+                            <div class="citation"></div>
+                        </div>
                     </div>
                 </div>
             </div>
