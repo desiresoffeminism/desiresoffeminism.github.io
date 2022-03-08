@@ -6,7 +6,7 @@ $(document).ready(function () {
 // The code in this section is inspired by Anant Anand Gupta
 $.getJSON("data/timeline.json", function (data) {
   timeline_data = data;
-  listItemString = $("#listItem").html();
+  listItemString = $(".listItem").html();
 
   timeline_data.forEach(buildNewList);
 
@@ -42,9 +42,17 @@ $.getJSON("data/timeline.json", function (data) {
 });
 // Section end
 
+// HORIZONTAL SCROLL
 const scrollContainer = document.getElementById("timeline");
 
 scrollContainer.addEventListener("wheel", (evt) => {
   evt.preventDefault();
   scrollContainer.scrollLeft += evt.deltaY;
+});
+
+// EXPAND TIMELINE ITEM
+// inspired by Nicole Oakes
+$(document).on('click', '.timeline-icon', function () {
+  $(this).toggleClass("expand");
+  $(".listItemData").toggleClass('expand');
 });

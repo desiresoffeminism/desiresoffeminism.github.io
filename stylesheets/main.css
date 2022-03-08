@@ -145,11 +145,16 @@ body {
   position: relative;
   top: 50%;
 }
-#timeline .dataItem {
-  margin: 1rem;
+#timeline #dataList .listItemData {
+  background: #33313b;
+  padding: 20px 20px;
 }
 #timeline p {
   margin: 0;
+}
+
+.templates .timeline-icon {
+  visibility: hidden;
 }
 
 .timeline-line {

@@ -213,15 +213,25 @@ body {
         display: flex;
         position: relative;
         top: 50%;
-    }
 
-    .dataItem {
-        margin: 1rem;
+
+        .listItemData {
+            background: $mid1;
+            padding: 20px 20px;
+        }
     }
 
     // REMOVE LATER
     p {
         margin: 0;
+    }
+}
+
+.templates {
+
+    // Hides template HTML
+    .timeline-icon {
+        visibility: hidden;
     }
 }
 

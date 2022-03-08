@@ -90,22 +90,25 @@
         <div id="timeline">
             <div id="dataList"></div>
             <div class="templates">
-                <div id="listItem">
-                    <div class="row1">
-                        <div class="title"></div>
-                        <div class="date"></div>
-                    </div>
-                    <div class="row2">
-                        <div class="description"></div>
-                    </div>
-                    <div class="row3">
-                        <div class="expand-info">
-                            <div class="country"></div>
-                            <div class="people"></div>
-                            <div class="topic"></div>
+                <div class="listItem">
+                    <i data-feather="plus-circle" class="timeline-icon"></i>
+                    <div class="listItemData">
+                        <div class="row1">
+                            <div class="title"></div>
+                            <div class="date"></div>
                         </div>
-                        <div class="expand-citation">
-                            <div class="citation"></div>
+                        <div class="row2">
+                            <div class="description"></div>
+                        </div>
+                        <div class="row3">
+                            <div class="expand-info">
+                                <div class="country"></div>
+                                <div class="people"></div>
+                                <div class="topic"></div>
+                            </div>
+                            <div class="expand-citation">
+                                <div class="citation"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -114,10 +117,10 @@
     </section>
 
     <!-- sets feather icons -->
+    <script type="text/javascript" src="scripts/timeline.js"></script>
     <script>
         feather.replace()
     </script>
-    <script type="text/javascript" src="scripts/timeline.js"></script>
 </body>
 
 </html>
