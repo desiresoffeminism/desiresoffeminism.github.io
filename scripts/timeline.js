@@ -54,5 +54,5 @@ scrollContainer.addEventListener("wheel", (evt) => {
 // inspired by Nicole Oakes
 $(document).on('click', '.timeline-icon', function () {
   $(this).toggleClass("expand");
-  $(".listItemData").toggleClass('expand');
+  $(this).next().toggleClass('expand');
 });
