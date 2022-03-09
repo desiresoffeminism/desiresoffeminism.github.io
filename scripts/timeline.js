@@ -6,14 +6,14 @@ $(document).ready(function () {
 // The code in this section is inspired by Anant Anand Gupta
 $.getJSON("data/timeline.json", function (data) {
   timeline_data = data;
-  listItemString = $(".listItem").html();
+  listItemString = $(".list-item").html();
 
   timeline_data.forEach(buildNewList);
 
   // filling in item info from JSON data
   function buildNewList(item) {
     // adds the item's weight as a class to the div for better selection
-    var listItem = $("<div class=\"dataItem " + item.weight + "\">" + listItemString + "</div>");
+    var listItem = $("<div class=\"data-item " + item.weight + "\">" + listItemString + "</div>");
 
     var listItemTitle = $(".title", listItem);
     listItemTitle.html(item.title);
@@ -56,3 +56,5 @@ $(document).on('click', '.timeline-icon', function () {
   $(this).toggleClass("expand");
   $(this).next().toggleClass('expand');
 });
+
+// TODO: add method of closing info box by clicking off of it

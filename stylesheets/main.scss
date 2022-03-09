@@ -41,6 +41,12 @@ $accent2: #a29ee6;
 $width: 280px;
 $width-compressed: 52px;
 
+$item-height-head: 100px;
+$item-height-desc: 150px;
+$item-height-expand: 200px;
+$item-full-height: $item-height-head+$item-height-desc+$item-height-expand;
+$item-width: 250px;
+
 /* ---- MAIN STYLING ---- */
 body {
     margin: 0;
@@ -118,6 +124,7 @@ h6 {
             .menu-icon {
                 position: absolute;
                 left: 12px;
+                padding-top: 3px; // align with Crimson Font
             }
 
             &:hover,
@@ -211,13 +218,68 @@ body {
 
     #dataList {
         display: flex;
-        position: relative;
-        top: 50%;
+        position: absolute;
+        left: 5%;
+        top: 45vh;
 
+        .data-item {
+            margin: 5px;
+        }
 
-        .listItemData {
-            background: $mid1;
-            padding: 20px 20px;
+        .timeline-icon {
+            position: absolute;
+            cursor: pointer;
+            transform: rotate(0deg);
+            transition: all .75s ease-in;
+            transition-delay: 0s;
+
+            &.expand {
+                transform: rotate(405deg);
+                transition-delay: 0s;
+            }
+        }
+
+        .list-item-data {
+            background: $bg;
+            border: 0px solid $bg;
+            color: $fg;
+            width: 24px;
+            height: auto;
+            max-height: 24px;
+            max-width: $item-width;
+            border-radius: 50%;
+            transition: all .75s ease-in;
+            transition-delay: 0s;
+
+            div {
+                visibility: hidden;
+            }
+
+            &.expand {
+                border: 3px solid $mid2;
+                width: $item-width;
+                height: $item-height-head + $item-height-desc;
+                max-height: $item-full-height;
+                max-width: $item-width;
+                padding: 24px;
+                border-radius: 0;
+                border-top-left-radius: 12px;
+
+                .row1,
+                .row2,
+                .row3 {
+                    visibility: visible;
+                    white-space: normal;
+                    overflow-wrap: break-word;
+                }
+
+                // Description boxes
+                .description {
+                    overflow-y: auto;
+                    max-height: $item-height-desc;
+                    padding-right: 15px;
+                }
+            }
         }
     }
 
@@ -238,22 +300,23 @@ body {
 .timeline-line {
     display: block;
     position: absolute;
-    top: 50%;
-    height: 4px;
+    top: 50vh;
+    height: 3px;
     width: 100%;
     background: $mid2;
 }
 
-/* ---- BROWSER-SPECIFIC ADJUSTMENTS ---- */
-/* Hide scrollbar for Chrome, Safari and Opera */
-// body::-webkit-scrollbar {
-//     display: none;
-// }
+/* ---- Timeline Item Scrollbars ---- */
+.description::-webkit-scrollbar {
+    width: 3px;
+}
 
-/* Hide scrollbar for IE, Edge and Firefox */
-// body {
-//     /* IE and Edge */
-//     -ms-overflow-style: none;
-//     /* Firefox */
-//     scrollbar-width: none;
-// }
+.description::-webkit-scrollbar-thumb {
+    border: 2px;
+    background-color: $accent;
+}
+
+.description::-webkit-scrollbar-track {
+    border: 2px;
+    background-color: $mid2;
+}

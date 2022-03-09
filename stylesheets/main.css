@@ -75,6 +75,7 @@ h6 {
 .sidenav .main-buttons > li .menu-icon {
   position: absolute;
   left: 12px;
+  padding-top: 3px;
 }
 .sidenav .main-buttons > li:hover, .sidenav .main-buttons > li:active, .sidenav .main-buttons > li:focus {
   background-color: #d3d6e7;
@@ -142,12 +143,60 @@ body {
 }
 #timeline #dataList {
   display: flex;
-  position: relative;
-  top: 50%;
+  position: absolute;
+  left: 5%;
+  top: 45vh;
 }
-#timeline #dataList .listItemData {
-  background: #33313b;
-  padding: 20px 20px;
+#timeline #dataList .data-item {
+  margin: 5px;
+}
+#timeline #dataList .timeline-icon {
+  position: absolute;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: all 0.75s ease-in;
+  transition-delay: 0s;
+}
+#timeline #dataList .timeline-icon.expand {
+  transform: rotate(405deg);
+  transition-delay: 0s;
+}
+#timeline #dataList .list-item-data {
+  background: #1c1a24;
+  border: 0px solid #1c1a24;
+  color: #e9ebf8;
+  width: 24px;
+  height: auto;
+  max-height: 24px;
+  max-width: 250px;
+  border-radius: 50%;
+  transition: all 0.75s ease-in;
+  transition-delay: 0s;
+}
+#timeline #dataList .list-item-data div {
+  visibility: hidden;
+}
+#timeline #dataList .list-item-data.expand {
+  border: 3px solid #4d4863;
+  width: 250px;
+  height: 250px;
+  max-height: 450px;
+  max-width: 250px;
+  padding: 24px;
+  border-radius: 0;
+  border-top-left-radius: 12px;
+}
+#timeline #dataList .list-item-data.expand .row1,
+#timeline #dataList .list-item-data.expand .row2,
+#timeline #dataList .list-item-data.expand .row3 {
+  visibility: visible;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+#timeline #dataList .list-item-data.expand .description {
+  overflow-y: auto;
+  max-height: 150px;
+  padding-right: 15px;
 }
 #timeline p {
   margin: 0;
@@ -160,14 +209,25 @@ body {
 .timeline-line {
   display: block;
   position: absolute;
-  top: 50%;
-  height: 4px;
+  top: 50vh;
+  height: 3px;
   width: 100%;
   background: #4d4863;
 }
 
-/* ---- BROWSER-SPECIFIC ADJUSTMENTS ---- */
-/* Hide scrollbar for Chrome, Safari and Opera */
-/* Hide scrollbar for IE, Edge and Firefox */
+/* ---- Timeline Item Scrollbars ---- */
+.description::-webkit-scrollbar {
+  width: 3px;
+}
+
+.description::-webkit-scrollbar-thumb {
+  border: 2px;
+  background-color: #775fe3;
+}
+
+.description::-webkit-scrollbar-track {
+  border: 2px;
+  background-color: #4d4863;
+}
 
 /*# sourceMappingURL=main.css.map */
