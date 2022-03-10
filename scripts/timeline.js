@@ -45,9 +45,9 @@ $.getJSON("data/timeline.json", function (data) {
 // HORIZONTAL SCROLL
 const scrollContainer = document.getElementById("timeline");
 
-scrollContainer.addEventListener("wheel", (evt) => {
-  evt.preventDefault();
-  scrollContainer.scrollLeft += evt.deltaY;
+scrollContainer.addEventListener("wheel", (event) => {
+  event.preventDefault();
+  scrollContainer.scrollLeft += event.deltaY;
 });
 
 // EXPAND TIMELINE ITEM
