@@ -91,7 +91,8 @@
             <div id="dataList"></div>
             <div class="templates">
                 <div class="list-item">
-                    <i data-feather="chevron-down" class="timeline-icon" tooltip="click for info"></i>
+                    <i data-feather="chevron-down" class="timeline-icon"></i>
+                    <div class="tooltip"></div>
                     <div class="list-item-data">
                         <div class="list-item-data-inner">
                             <div class="row1">
@@ -100,10 +101,20 @@
                             </div>
                             <div class="row2">
                                 <p class="description"></p>
-                                <p class="country"></p>
-                                <p class="people"></p>
-                                <p class="topic"></p>
-                                <p class="citation"></p>
+                                <ul class="item-meta">
+                                    <li>Countries
+                                        <ul class="country"></ul>
+                                    </li>
+                                    <li>People
+                                        <ul class="people"></ul>
+                                    </li>
+                                    <li>Topics
+                                        <ul class="topic"></ul>
+                                    </li>
+                                    <li>Citations
+                                        <ul class="citation"></ul>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

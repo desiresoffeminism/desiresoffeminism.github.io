@@ -44,7 +44,7 @@ $width-compressed: 52px;
 $item-height-head: 135px;
 $item-height-desc: 150px;
 $item-height-expand: 200px;
-$item-full-height: $item-height-head+$item-height-desc+$item-height-expand;
+$item-full-height: $item-height-head+$item-height-desc;
 $item-width: 350px;
 
 /* ---- MAIN STYLING ---- */
@@ -224,19 +224,26 @@ body {
 
         .data-item {
             margin: 5px;
+
+
         }
 
         .timeline-icon {
             position: absolute;
             color: $bg;
             background: $mid2;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             cursor: pointer;
             z-index: 2;
             transform: rotate(-0deg);
             transition: all .75s ease-in;
             transition-delay: 0s;
+
+            &:hover {
+                background: $accent;
+                transition: 0.5s ease-in;
+            }
 
             // &:not(.expand) {
             //     color: $bg;
@@ -266,12 +273,12 @@ body {
             }
 
             &.expand {
-                border: 3px solid $accent;
+                border: 2px solid $accent;
                 width: $item-width;
-                height: $item-height-head + $item-height-desc;
+                // height: $item-height-head + $item-height-desc;
                 max-height: $item-full-height;
                 max-width: $item-width;
-                padding: 10px 22px 10px 22px;
+                padding: 10px 22px 15px 22px;
                 border-radius: 0;
                 border-top-left-radius: 12px;
 
@@ -316,7 +323,46 @@ body {
         }
     }
 
-    // REMOVE LATER
+    // TOOLTIP
+    .tooltip {
+        z-index: 2;
+        width: 0px;
+        height: 0px;
+        max-width: 110px;
+        max-height: 0px;
+        position: relative;
+        z-index: 2;
+        bottom: 60px;
+    }
+
+    .tooltip .tooltip-text {
+        opacity: 0;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 3px 10px 3px 10px;
+        border: 2px solid $accent;
+
+        color: $fg;
+        font-size: 12px;
+        text-align: center;
+        text-transform: uppercase;
+
+        .tooltip-year {
+            color: $mid3;
+            font-style: italic;
+        }
+    }
+
+    .timeline-icon:hover+.tooltip {
+        .tooltip-text {
+            opacity: 1;
+            transition: 0.5s ease-in;
+
+            cursor: pointer;
+        }
+    }
+
+
     p {
         margin: 0;
     }
@@ -325,7 +371,8 @@ body {
 .templates {
 
     // Hides template HTML
-    .timeline-icon {
+    .timeline-icon,
+    .item-meta {
         visibility: hidden;
     }
 }
@@ -334,7 +381,7 @@ body {
     display: block;
     position: absolute;
     top: 50vh;
-    height: 3px;
+    height: 2px;
     width: 100%;
     background: $mid2;
 }

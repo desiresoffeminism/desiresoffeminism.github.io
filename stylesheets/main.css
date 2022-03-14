@@ -154,13 +154,17 @@ body {
   position: absolute;
   color: #1c1a24;
   background: #4d4863;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   cursor: pointer;
   z-index: 2;
   transform: rotate(0deg);
   transition: all 0.75s ease-in;
   transition-delay: 0s;
+}
+#timeline #dataList .timeline-icon:hover {
+  background: #775fe3;
+  transition: 0.5s ease-in;
 }
 #timeline #dataList .timeline-icon.expand {
   color: #e9ebf8;
@@ -183,12 +187,11 @@ body {
   opacity: 0;
 }
 #timeline #dataList .list-item-data.expand {
-  border: 3px solid #775fe3;
+  border: 2px solid #775fe3;
   width: 350px;
-  height: 285px;
-  max-height: 485px;
+  max-height: 285px;
   max-width: 350px;
-  padding: 10px 22px 10px 22px;
+  padding: 10px 22px 15px 22px;
   border-radius: 0;
   border-top-left-radius: 12px;
 }
@@ -223,11 +226,42 @@ body {
   padding-right: 15px;
   text-align: justify;
 }
+#timeline .tooltip {
+  z-index: 2;
+  width: 0px;
+  height: 0px;
+  max-width: 110px;
+  max-height: 0px;
+  position: relative;
+  z-index: 2;
+  bottom: 60px;
+}
+#timeline .tooltip .tooltip-text {
+  opacity: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 3px 10px 3px 10px;
+  border: 2px solid #775fe3;
+  color: #e9ebf8;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+}
+#timeline .tooltip .tooltip-text .tooltip-year {
+  color: #918ea7;
+  font-style: italic;
+}
+#timeline .timeline-icon:hover + .tooltip .tooltip-text {
+  opacity: 1;
+  transition: 0.5s ease-in;
+  cursor: pointer;
+}
 #timeline p {
   margin: 0;
 }
 
-.templates .timeline-icon {
+.templates .timeline-icon,
+.templates .item-meta {
   visibility: hidden;
 }
 
@@ -235,7 +269,7 @@ body {
   display: block;
   position: absolute;
   top: 50vh;
-  height: 3px;
+  height: 2px;
   width: 100%;
   background: #4d4863;
 }
