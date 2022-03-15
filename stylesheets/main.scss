@@ -318,7 +318,33 @@ body {
                     max-height: $item-height-desc;
                     padding-right: 15px;
                     text-align: justify;
+
+                    .item-meta {
+                        padding-left: 0;
+
+                        .tags {
+                            padding-left: 0;
+                        }
+                    }
+
+                    .meta-tag {
+                        display: inline-block;
+                        margin: 5px 5px 5px 0px;
+                    }
                 }
+
+                // .country li,
+                // .people li,
+                // .topic li {
+                //     display: inline;
+
+                //     ul {
+                //         li.meta-tag {
+                //             display: inline-block;
+                //             margin: 5px 5px 5px 10px;
+                //         }
+                //     }
+                // }
             }
         }
     }

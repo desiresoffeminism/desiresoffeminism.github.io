@@ -226,6 +226,16 @@ body {
   padding-right: 15px;
   text-align: justify;
 }
+#timeline #dataList .list-item-data.expand .row2 .item-meta {
+  padding-left: 0;
+}
+#timeline #dataList .list-item-data.expand .row2 .item-meta .tags {
+  padding-left: 0;
+}
+#timeline #dataList .list-item-data.expand .row2 .meta-tag {
+  display: inline-block;
+  margin: 5px 5px 5px 0px;
+}
 #timeline .tooltip {
   z-index: 2;
   width: 0px;
