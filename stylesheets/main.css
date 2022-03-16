@@ -229,15 +229,34 @@ body {
 #timeline #dataList .list-item-data.expand .row2 .item-meta {
   padding-left: 0;
 }
+#timeline #dataList .list-item-data.expand .row2 .item-meta li {
+  font-family: "Crimson Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 600;
+  font-size: 20px;
+}
 #timeline #dataList .list-item-data.expand .row2 .item-meta .tags {
   padding-left: 0;
+}
+#timeline #dataList .list-item-data.expand .row2 .item-meta .tags li {
+  background: #4d4863;
+  padding: 0px 5px 0px 5px;
+  font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  font-weight: 500;
+}
+#timeline #dataList .list-item-data.expand .row2 .item-meta .citation {
+  text-align: left;
+}
+#timeline #dataList .list-item-data.expand .row2 .item-meta .citation li {
+  background: none;
+  padding: 5px 5px 5px 5px;
+  border-bottom: 1px solid #4d4863;
 }
 #timeline #dataList .list-item-data.expand .row2 .meta-tag {
   display: inline-block;
   margin: 5px 5px 5px 0px;
 }
 #timeline .tooltip {
-  z-index: 2;
   width: 0px;
   height: 0px;
   max-width: 110px;
@@ -270,9 +289,19 @@ body {
   margin: 0;
 }
 
+.templates {
+  height: 0;
+}
+.templates div,
+.templates ul,
+.templates li {
+  height: 0;
+}
 .templates .timeline-icon,
 .templates .item-meta {
   visibility: hidden;
+  height: 0;
+  margin: 0;
 }
 
 .timeline-line {

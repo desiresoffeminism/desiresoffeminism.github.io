@@ -224,8 +224,6 @@ body {
 
         .data-item {
             margin: 5px;
-
-
         }
 
         .timeline-icon {
@@ -244,10 +242,6 @@ body {
                 background: $accent;
                 transition: 0.5s ease-in;
             }
-
-            // &:not(.expand) {
-            //     color: $bg;
-            // }
 
             &.expand {
                 color: $fg;
@@ -275,7 +269,6 @@ body {
             &.expand {
                 border: 2px solid $accent;
                 width: $item-width;
-                // height: $item-height-head + $item-height-desc;
                 max-height: $item-full-height;
                 max-width: $item-width;
                 padding: 10px 22px 15px 22px;
@@ -322,8 +315,32 @@ body {
                     .item-meta {
                         padding-left: 0;
 
+                        li {
+                            font-family: $font-header;
+                            font-weight: 600;
+                            font-size: 20px;
+                        }
+
                         .tags {
                             padding-left: 0;
+
+                            li {
+                                background: $mid2;
+                                padding: 0px 5px 0px 5px;
+                                font-family: $font-body;
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .citation {
+                            text-align: left;
+
+                            li {
+                                background: none;
+                                padding: 5px 5px 5px 5px;
+                                border-bottom: 1px solid $mid2;
+                            }
                         }
                     }
 
@@ -332,26 +349,12 @@ body {
                         margin: 5px 5px 5px 0px;
                     }
                 }
-
-                // .country li,
-                // .people li,
-                // .topic li {
-                //     display: inline;
-
-                //     ul {
-                //         li.meta-tag {
-                //             display: inline-block;
-                //             margin: 5px 5px 5px 10px;
-                //         }
-                //     }
-                // }
             }
         }
     }
 
     // TOOLTIP
     .tooltip {
-        z-index: 2;
         width: 0px;
         height: 0px;
         max-width: 110px;
@@ -395,11 +398,20 @@ body {
 }
 
 .templates {
+    height: 0;
+
+    div,
+    ul,
+    li {
+        height: 0;
+    }
 
     // Hides template HTML
     .timeline-icon,
     .item-meta {
         visibility: hidden;
+        height: 0;
+        margin: 0;
     }
 }
 

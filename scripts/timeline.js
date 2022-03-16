@@ -42,25 +42,33 @@ $.getJSON("data/timeline.json", function (data) {
     listItemDesc.html(item.description);
 
     // ---- ROW2 - ITEM-META ----
-    // don't populate <ul>'s if JSON fields are empty
+    // populate <ul>'s with N/A if JSON fields are empty
+    var listItemCountry = $(".country", listItem);
     if (item.country != emptyArray) {
-      var listItemCountry = $(".country", listItem);
       listItemCountry.html(buildInnerUl(item.country));
+    } else {
+      listItemCountry.html(buildInnerUl("N/A"));
     }
 
+    var listItemPeople = $(".people", listItem);
     if (item.people != emptyArray) {
-      var listItemPeople = $(".people", listItem);
       listItemPeople.html(buildInnerUl(item.people));
+    } else {
+      listItemPeople.html(buildInnerUl("N/A"));
     }
 
+    var listItemTopic = $(".topic", listItem);
     if (item.topic != emptyArray) {
-      var listItemTopic = $(".topic", listItem);
       listItemTopic.html(buildInnerUl(item.topic));
+    } else {
+      listItemTopic.html(buildInnerUl("N/A"));
     }
 
+    var listItemCite = $(".citation", listItem);
     if (item.citation != emptyArray) {
-      var listItemCite = $(".citation", listItem);
       listItemCite.html(buildInnerUlCite(item.citation));
+    } else {
+      listItemCite.html(buildInnerUl("N/A"));
     }
 
 
@@ -80,7 +88,7 @@ $.getJSON("data/timeline.json", function (data) {
     return li_string;
   }
 
-  // same but for citations, so separator is different
+  // same for citations, but separator is different due to them containing commas
   function buildInnerUlCite(column) {
     cellData = column.split(' -- ');
     li_string = "";
@@ -98,18 +106,19 @@ $.getJSON("data/timeline.json", function (data) {
 // HORIZONTAL SCROLL
 const scrollContainer = document.getElementById("timeline");
 
-scrollContainer.addEventListener("wheel", (event) => {
-  event.preventDefault();
+var horizontalScroll = function (event) {
   scrollContainer.scrollLeft += event.deltaY;
-});
+}
 
-// TODO: Add vertical scroll inside timeline item (try rotation?)
-//VERTICAL SCROLL IN TIMELINE ITEM
-// $(document).mousemove(function () {
-//   if ($(".timeline-icon:hover").length != 0) {
-//     // don't scroll horizontally please? :')
-//   }
-// })
+// TODO: Add vertical scroll inside timeline item
+// VERTICAL SCROLL IN TIMELINE ITEM
+$(document).mousemove(function () {
+  if ($(".expand:hover").length != 0) {
+    scrollContainer.removeEventListener("wheel", horizontalScroll);
+  } else {
+    scrollContainer.addEventListener("wheel", horizontalScroll);
+  }
+})
 
 
 // EXPAND TIMELINE ITEM
