@@ -6,24 +6,46 @@
 */
 
 /* ---- VARIABLES ---- */
-$font-header: "Crimson Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-$font-body: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
+$font-header: "Crimson Pro",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Helvetica,
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol";
+$font-body: "Mulish",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+Helvetica,
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol";
 
-$bg: #1C1A24; // background
-$mid1: #33313B;
-$mid2: #4D4863;
+$bg: #1c1a24; // background
+$mid1: #33313b;
+$mid2: #4d4863;
 $mid3: #918ea7;
 $mid4: #d3d6e7;
-$fg: #E9EBF8; // foreground
-$accent: #775FE3;
-$accent2: #A29EE6;
+$fg: #e9ebf8; // foreground
+$accent: #775fe3;
+$accent2: #a29ee6;
 
 $width: 280px;
 $width-compressed: 52px;
+
+$item-height-head: 135px;
+$item-height-desc: 150px;
+$item-height-expand: 200px;
+$item-full-height: $item-height-head+$item-height-desc;
+$item-width: 350px;
 
 /* ---- MAIN STYLING ---- */
 body {
@@ -43,9 +65,34 @@ h6 {
     font-family: $font-header;
 }
 
+::selection {
+    background: $accent;
+    color: $fg;
+}
+
+// SCROLLBAR
+::-webkit-scrollbar {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: $fg;
+}
+
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    background: $accent;
+    // border-top: 3px solid $bg;
+}
+
 /* ---- MAIN NAV MENU ---- */
 .sidenav {
     position: fixed;
+    box-sizing: border-box;
     width: $width;
     height: 100%;
     background-color: $fg;
@@ -77,6 +124,7 @@ h6 {
             .menu-icon {
                 position: absolute;
                 left: 12px;
+                padding-top: 3px; // align with Crimson Font
             }
 
             &:hover,
@@ -126,14 +174,13 @@ h6 {
         &:active,
         &:focus {
             background-color: darken($mid4, 4);
-            
+
             a {
-                color: $accent
+                color: $accent;
             }
         }
     }
 }
-
 
 body {
     line-height: 30px;
@@ -144,16 +191,250 @@ body {
     height: 100%;
 }
 
-/* ---- BROWSER-SPECIFIC ADJUSTMENTS ---- */
-/* Hide scrollbar for Chrome, Safari and Opera */
-body::-webkit-scrollbar {
-    display: none;
+#logo-menu {
+    position: fixed;
+    padding: 16px 12px;
+    width: 32px;
+
+    a {
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: $accent;
+        }
+    }
+
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-body {
-    /* IE and Edge */
-    -ms-overflow-style: none;
-    /* Firefox */
-    scrollbar-width: none;
+/* ---- TIMELINE STYLING ---- */
+#timeline {
+    height: 100vh;
+    position: relative;
+    margin-left: $width;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    #dataList {
+        display: flex;
+        position: absolute;
+        left: 5%;
+        top: 48vh;
+
+        .data-item {
+            margin: 5px;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            color: $bg;
+            background: $mid2;
+            width: 26px;
+            height: 26px;
+            cursor: pointer;
+            z-index: 2;
+            transform: rotate(-0deg);
+            transition: all .75s ease-in;
+            transition-delay: 0s;
+
+            &:hover {
+                background: $accent;
+                transition: 0.5s ease-in;
+            }
+
+            &.expand {
+                color: $fg;
+                background: $accent;
+                transform: rotate(-450deg);
+                transition-delay: 0s;
+            }
+        }
+
+        .list-item-data {
+            background: $bg;
+            border: 1px solid $mid2;
+            color: $fg;
+            width: 24px;
+            height: auto;
+            max-height: 24px;
+            max-width: $item-width;
+            transition: all .75s ease-in;
+            transition-delay: 0s;
+
+            div {
+                opacity: 0;
+            }
+
+            &.expand {
+                border: 2px solid $accent;
+                width: $item-width;
+                max-height: $item-full-height;
+                max-width: $item-width;
+                padding: 10px 22px 15px 22px;
+                border-radius: 0;
+                border-top-left-radius: 12px;
+
+                div {
+                    opacity: 1;
+                    transition-delay: 0.75s;
+                }
+
+                .row1,
+                .row2 {
+                    white-space: normal;
+                    overflow-wrap: break-word;
+                }
+
+                .row1 {
+                    border-bottom: 1px solid $mid2;
+                    margin-bottom: 15px;
+
+                    .date {
+                        text-align-last: justify;
+                    }
+
+                    p:first-of-type {
+                        font-family: $font-header;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        font-size: 24px;
+                        text-align: center;
+                        padding-bottom: 5px;
+                        border-bottom: 1px solid $mid2;
+                    }
+                }
+
+                // Box info section
+                .row2 {
+                    overflow-y: auto;
+                    max-height: $item-height-desc;
+                    padding-right: 15px;
+                    text-align: justify;
+
+                    .item-meta {
+                        padding-left: 0;
+
+                        li {
+                            font-family: $font-header;
+                            font-weight: 600;
+                            font-size: 20px;
+                        }
+
+                        .tags {
+                            padding-left: 0;
+
+                            li {
+                                background: $mid2;
+                                padding: 0px 5px 0px 5px;
+                                font-family: $font-body;
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                        }
+
+                        .citation {
+                            text-align: left;
+
+                            li {
+                                background: none;
+                                padding: 5px 5px 5px 5px;
+                                border-bottom: 1px solid $mid2;
+                            }
+                        }
+                    }
+
+                    .meta-tag {
+                        display: inline-block;
+                        margin: 5px 5px 5px 0px;
+                    }
+                }
+            }
+        }
+    }
+
+    // TOOLTIP
+    .tooltip {
+        width: 0px;
+        height: 0px;
+        max-width: 110px;
+        max-height: 0px;
+        position: relative;
+        z-index: 2;
+        bottom: 60px;
+    }
+
+    .tooltip .tooltip-text {
+        opacity: 0;
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 3px 10px 3px 10px;
+        border: 2px solid $accent;
+
+        color: $fg;
+        font-size: 12px;
+        text-align: center;
+        text-transform: uppercase;
+
+        .tooltip-year {
+            color: $mid3;
+            font-style: italic;
+        }
+    }
+
+    .timeline-icon:hover+.tooltip {
+        .tooltip-text {
+            opacity: 1;
+            transition: 0.5s ease-in;
+
+            cursor: pointer;
+        }
+    }
+
+
+    p {
+        margin: 0;
+    }
+}
+
+.templates {
+    height: 0;
+
+    div,
+    ul,
+    li {
+        height: 0;
+    }
+
+    // Hides template HTML
+    .timeline-icon,
+    .item-meta {
+        visibility: hidden;
+        height: 0;
+        margin: 0;
+    }
+}
+
+.timeline-line {
+    display: block;
+    position: absolute;
+    top: 50vh;
+    height: 2px;
+    width: 100%;
+    background: $mid2;
+}
+
+/* ---- Timeline Item Scrollbars ---- */
+.row2::-webkit-scrollbar {
+    width: 2px;
+}
+
+.row2::-webkit-scrollbar-thumb {
+    border: 2px;
+    background-color: $accent;
+}
+
+.row2::-webkit-scrollbar-track {
+    border: 2px;
+    background-color: $mid2;
 }

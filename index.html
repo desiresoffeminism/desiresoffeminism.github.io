@@ -14,6 +14,7 @@
         CREDITS: 
         - feathericons by Cole Bemis
         - sidebar menu inspired by Jon Ambas
+        - converting JS object to HTML list inspired by Anant Anand Gupta
 
     -------->
 
@@ -26,31 +27,49 @@
 
     <!-------- OTHER LINKS -------->
     <link type="text/css" rel="stylesheet" href="stylesheets/main.css">
+    <!-- TODO: update this with finalized logo -->
+    <link type="image/x-icon" rel="icon" href="media/branding/logo_favicon.png">
 
     <!-------- SCRIPTS -------->
     <script src="https://unpkg.com/feather-icons"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-------- SITE STYLING -------->
     <title>Desires of Feminism</title>
     <!-- <link rel="shortcut icon" href="favicon.png"> -->
 </head>
 
 <body>
+    <!-- BASE STYLING -->
+    <div class="timeline-line"></div>
+
+    <!-- NAV -->
     <header>
         <!--------
             The code in this section was inspired by Jon Ambas
         -------->
         <nav class="sidenav">
+            <!-- TODO: replace with svg -->
+            <a href="#"><img id="logo-menu" src="/media/branding/logo_purple.svg" alt="project logo"></a>
             <ul class="main-buttons">
                 <li>
                     <i data-feather="menu" class="menu-icon"></i>
                     Menu
                     <ul class="hidden">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/citations">Citations</a></li>
-                        <li><a href="/contribute">Contribute</a></li>
-                        <li><a href="https://github.com/desiresoffeminism/desiresoffeminism.github.io">GitHub</a></li>
+                        <a href="#">
+                            <li>Home</li>
+                        </a>
+                        <a href="/about">
+                            <li>About</li>
+                        </a>
+                        <a href="/citations">
+                            <li>Citations</li>
+                        </a>
+                        <a href="/contribute">
+                            <li>Contribute</li>
+                        </a>
+                        <a href="https://github.com/desiresoffeminism/desiresoffeminism.github.io">
+                            <li>GitHub</li>
+                        </a>
                     </ul>
                 </li>
                 <li>
@@ -67,7 +86,45 @@
         </nav>
     </header>
 
+    <section>
+        <div id="timeline">
+            <div id="dataList"></div>
+            <div class="templates">
+                <div class="list-item">
+                    <i data-feather="chevron-down" class="timeline-icon"></i>
+                    <div class="tooltip"></div>
+                    <div class="list-item-data">
+                        <div class="list-item-data-inner">
+                            <div class="row1">
+                                <p class="title"></p>
+                                <p class="date"></p>
+                            </div>
+                            <div class="row2">
+                                <p class="description"></p>
+                                <ul class="item-meta">
+                                    <li>Countries
+                                        <ul class="country tags"></ul>
+                                    </li>
+                                    <li>People
+                                        <ul class="people tags"></ul>
+                                    </li>
+                                    <li>Topics
+                                        <ul class="topic tags"></ul>
+                                    </li>
+                                    <li>Citations
+                                        <ul class="citation tags"></ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- sets feather icons -->
+    <script type="text/javascript" src="scripts/timeline.js"></script>
     <script>
         feather.replace()
     </script>
