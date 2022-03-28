@@ -99,7 +99,7 @@ h6 {
   position: absolute;
   top: 0;
   right: 0;
-  overflow: hidden;
+  overflow: auto;
   list-style-type: none;
   background-color: #d3d6e7;
   transition: all 0.3s ease-in-out;
@@ -144,7 +144,7 @@ body {
 #timeline #dataList {
   display: flex;
   position: absolute;
-  left: 5%;
+  left: 2%;
   top: 48vh;
 }
 #timeline #dataList .data-item {

@@ -161,7 +161,7 @@ h6 {
     top: 0;
     right: 0;
 
-    overflow: hidden;
+    overflow: auto;
 
     list-style-type: none;
     background-color: $mid4;
@@ -219,7 +219,7 @@ body {
     #dataList {
         display: flex;
         position: absolute;
-        left: 5%;
+        left: 2%;
         top: 48vh;
 
         .data-item {

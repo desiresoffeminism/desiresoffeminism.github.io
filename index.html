@@ -77,9 +77,17 @@
                     Filter
                     <ul class="hidden">
                         <li>Time Range</li>
-                        <li>Location</li>
+                        <li>Location
+                            <input type="text" id="countrySearch" class="drop-search" placeholder="Search country codes"
+                                onkeyup="cDropdownSearch()">
+                            <ul id="countryDrop" class="dropdown"></ul>
+                        </li>
                         <li>People</li>
-                        <li>Topic</li>
+                        <li>Topic
+                            <input type="text" id="topicSearch" class="drop-search" placeholder="Search topics"
+                                onkeyup="tDropdownSearch()">
+                            <ul id="topicDrop" class="dropdown"></ul>
+                        </li>
                     </ul>
                 </li>
             </ul>
