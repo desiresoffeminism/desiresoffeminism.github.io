@@ -22,7 +22,7 @@ $.getJSON("data/timeline.json", function (data) {
   countries_list.sort();
   topics_list.sort();
   $("#countryDrop").append(dropdownHTML(countries_list));
-  $("#topicrop").append(dropdownHTML(topics_list));
+  $("#topicDrop").append(dropdownHTML(topics_list));
 
 
   // filling in item info from JSON data
