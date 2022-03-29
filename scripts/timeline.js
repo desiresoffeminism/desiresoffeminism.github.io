@@ -17,7 +17,6 @@ $.getJSON("data/timeline.json", function (data) {
 
   // build filter dropdowns
   timeline_data.forEach(fetchSearchTags);
-
   // TODO: display full country names with country codes
   countries_list.sort();
   topics_list.sort();
@@ -151,7 +150,38 @@ $.getJSON("data/timeline.json", function (data) {
 });
 
 // ----- SITE FUNCTIONALITY -----
-// NAV DROPDOWN SEARCH
+// NAV ACCORDION DROPDOWN
+// inspired by fainder
+$(function () {
+  var Accordion = function (el, multiple) {
+    this.el = el || {};
+    this.multiple = multiple || false;
+
+    var droppers = this.el.find('.dropper');
+    droppers.on('click', {
+      el: this.el,
+      multiple: this.multiple
+    }, this.dropdown)
+  }
+
+  Accordion.prototype.dropdown = function (e) {
+    var $el = e.data.el;
+    $this = $(this),
+      $next = $this.next();
+
+    $next.slideToggle();
+    $this.parent().toggleClass('open');
+
+    // if new submenu is toggled open, close others
+    if (!e.data.multiple) {
+      $el.find('.dropped').not($next).slideUp().parent().removeClass('open');
+    };
+  }
+
+  var accordion = new Accordion($('#hasAccordions'), false);
+});
+
+// NAV DROPDOWN SEARCHES
 function cDropdownSearch() {
   var input, filter, search_container, search_item, country, i;
   input = document.getElementById("countrySearch");

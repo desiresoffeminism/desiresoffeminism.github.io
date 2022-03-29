@@ -54,6 +54,10 @@ body {
     background: $bg;
     color: $fg;
     font-family: $font-body;
+
+    ul {
+        list-style-type: none;
+    }
 }
 
 h1,
@@ -63,6 +67,7 @@ h4,
 h5,
 h6 {
     font-family: $font-header;
+    font-weight: 600;
 }
 
 ::selection {
@@ -98,7 +103,6 @@ h6 {
     background-color: $fg;
 
     .main-buttons {
-        list-style-type: none;
         margin: 64px 0;
         padding: 0;
         color: $bg;
@@ -154,9 +158,9 @@ h6 {
 
 .hidden {
     width: 0;
+    // width: $width - $width-compressed;
     height: 100%;
-    padding: 64px 0;
-
+    padding: 64px 0px 0px 0px;
     position: absolute;
     top: 0;
     right: 0;
@@ -175,12 +179,124 @@ h6 {
         &:focus {
             background-color: darken($mid4, 4);
 
-            a {
+            a,
+            svg {
                 color: $accent;
             }
+
+        }
+
+        div.drop-search,
+        ul.dropped {
+            display: none;
         }
     }
 }
+
+// Accordion functionality 
+// inspired by fainder
+// start
+.hidden .dropper {
+    display: block;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.hidden li svg {
+    position: absolute;
+    top: 4px;
+    font-size: 18px;
+    color: $bg;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.hidden li svg.submenu-icon {
+    right: 0px;
+    left: auto;
+    font-size: 16px;
+}
+
+.hidden li.open .dropper {
+    color: $accent;
+}
+
+.hidden li.open svg {
+    color: $accent;
+}
+
+.hidden li.open svg.submenu-icon {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.dropped {
+    display: none;
+
+    input[type=text] {
+        border: none;
+        border-bottom: 2px solid $accent;
+        margin-top: 12px;
+        padding-bottom: 6px;
+        width: 90%;
+
+        font-family: $font-body;
+        background-color: transparent;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.dropdown {
+    padding-left: 0;
+}
+
+// searchbar styling
+::placeholder {
+    color: $bg;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: $bg;
+}
+
+::-ms-input-placeholder {
+    color: $bg;
+}
+
+// dropdown item styling
+.dropped ul.dropdown li.dropdown-item {
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+}
+
+li.dropdown-item {
+    display: block;
+    text-decoration: none;
+    color: #d9d9d9;
+    padding: 12px;
+    padding-left: 0;
+    -webkit-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+}
+
+.dropdown-item:hover {
+    background: #b63b4d;
+    color: #FFF;
+}
+
+// end
 
 body {
     line-height: 30px;
@@ -312,6 +428,10 @@ body {
                     padding-right: 15px;
                     text-align: justify;
 
+                    .description {
+                        line-height: 25px;
+                    }
+
                     .item-meta {
                         padding-left: 0;
 
@@ -319,6 +439,7 @@ body {
                             font-family: $font-header;
                             font-weight: 600;
                             font-size: 20px;
+                            padding-top: 10px;
                         }
 
                         .tags {

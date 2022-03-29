@@ -15,6 +15,8 @@
         - feathericons by Cole Bemis
         - sidebar menu inspired by Jon Ambas
         - converting JS object to HTML list inspired by Anant Anand Gupta
+        - expanding timeline items inspired by Nicole Oakes
+        - accordion menu folding inspired by fainder
 
     -------->
 
@@ -75,18 +77,37 @@
                 <li>
                     <i data-feather="filter" class="menu-icon"></i>
                     Filter
-                    <ul class="hidden">
-                        <li>Time Range</li>
-                        <li>Location
-                            <input type="text" id="countrySearch" class="drop-search" placeholder="Search country codes"
-                                onkeyup="cDropdownSearch()">
-                            <ul id="countryDrop" class="dropdown"></ul>
+                    <ul id="hasAccordions" class="hidden">
+                        <li>
+                            <div class="dropper">
+                                Location
+                                <i data-feather="chevron-down" class="submenu-icon"></i>
+                            </div>
+                            <div class="dropped">
+                                <input type="text" id="countrySearch" class="drop-search"
+                                    placeholder="Search country codes..." onkeyup="cDropdownSearch()">
+                                <ul id="countryDrop" class="dropdown"></ul>
+                            </div>
                         </li>
-                        <li>People</li>
-                        <li>Topic
-                            <input type="text" id="topicSearch" class="drop-search" placeholder="Search topics"
-                                onkeyup="tDropdownSearch()">
-                            <ul id="topicDrop" class="dropdown"></ul>
+                        <li>
+                            <div class="dropper">
+                                People
+                                <i data-feather="chevron-down" class="submenu-icon"></i>
+                            </div>
+                            <div class="dropped">
+                                <input type="text" id="peopleSearch" class="drop-search" placeholder="Search people...">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropper">
+                                Topic
+                                <i data-feather="chevron-down" class="submenu-icon"></i>
+                            </div>
+                            <div class="dropped">
+                                <input type="text" id="topicSearch" class="drop-search" placeholder="Search topics..."
+                                    onkeyup="tDropdownSearch()">
+                                <ul id="topicDrop" class="dropdown"></ul>
+                            </div>
                         </li>
                     </ul>
                 </li>
