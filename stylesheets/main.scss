@@ -48,12 +48,18 @@ $item-full-height: $item-height-head+$item-height-desc;
 $item-width: 350px;
 
 /* ---- MAIN STYLING ---- */
+html,
+body {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding: 0;
     background: $bg;
     color: $fg;
     font-family: $font-body;
+    line-height: 30px;
 
     ul {
         list-style-type: none;
@@ -195,7 +201,6 @@ h6 {
 
 // Accordion functionality 
 // inspired by fainder
-// start
 .hidden .dropper {
     display: block;
     position: relative;
@@ -294,17 +299,6 @@ li.dropdown-item {
 .dropdown-item:hover {
     background: #b63b4d;
     color: #FFF;
-}
-
-// end
-
-body {
-    line-height: 30px;
-}
-
-html,
-body {
-    height: 100%;
 }
 
 #logo-menu {
@@ -461,6 +455,10 @@ body {
                                 background: none;
                                 padding: 5px 5px 5px 5px;
                                 border-bottom: 1px solid $mid2;
+
+                                &:last-child {
+                                    border: none;
+                                }
                             }
                         }
                     }

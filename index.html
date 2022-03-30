@@ -80,11 +80,21 @@
                     <ul id="hasAccordions" class="hidden">
                         <li>
                             <div class="dropper">
+                                General
+                                <i data-feather="chevron-down" class="submenu-icon"></i>
+                            </div>
+                            <div class="dropped">
+                                <input type="text" id="generalSearch" class="drop-search"
+                                    placeholder="Search everything...">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropper">
                                 Location
                                 <i data-feather="chevron-down" class="submenu-icon"></i>
                             </div>
                             <div class="dropped">
-                                <input type="text" id="countrySearch" class="drop-search"
+                                <input type="text" id="countrySearch" class="accord-search drop-search"
                                     placeholder="Search country codes..." onkeyup="cDropdownSearch()">
                                 <ul id="countryDrop" class="dropdown"></ul>
                             </div>
@@ -104,8 +114,8 @@
                                 <i data-feather="chevron-down" class="submenu-icon"></i>
                             </div>
                             <div class="dropped">
-                                <input type="text" id="topicSearch" class="drop-search" placeholder="Search topics..."
-                                    onkeyup="tDropdownSearch()">
+                                <input type="text" id="topicSearch" class="accord-search drop-search"
+                                    placeholder="Search topics..." onkeyup="tDropdownSearch()">
                                 <ul id="topicDrop" class="dropdown"></ul>
                             </div>
                         </li>
@@ -115,7 +125,7 @@
         </nav>
     </header>
 
-    <section>
+    <section id="timelineSection">
         <div id="timeline">
             <div id="dataList"></div>
             <div class="templates">

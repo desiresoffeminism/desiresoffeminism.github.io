@@ -185,13 +185,13 @@ $(function () {
 function cDropdownSearch() {
   var input, filter, search_container, search_item, country, i;
   input = document.getElementById("countrySearch");
-  filter = input.value.toUpperCase();
+  filter = input.value.toLowerCase();
   search_container = document.getElementById("countryDrop");
   search_item = search_container.getElementsByClassName("dropdown-item");
 
   for (i = 0; i < search_item.length; i++) {
     country = search_item[i];
-    if (country.innerText.toUpperCase().indexOf(filter) > -1) {
+    if (country.innerText.toLowerCase().indexOf(filter) > -1) {
       search_item[i].style.display = "";
     } else {
       search_item[i].style.display = "none";
@@ -215,6 +215,61 @@ function tDropdownSearch() {
     }
   }
 }
+
+// TAG SEARCHES
+function toggleVisiblity(input_value, class_contents) {
+  for (i = 0; i < class_contents.length - 1; i++) {
+    var contents = class_contents[i].textContent.toLowerCase();
+
+    if (contents.includes(input_value)) {
+      class_contents[i].closest(".data-item").style.display = "";
+    } else {
+      class_contents[i].closest(".data-item").style.display = "none";
+    }
+  }
+}
+
+$("#generalSearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("data-item");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
+});
+
+$("#countrySearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("country");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
+});
+
+
+$("#peopleSearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("people");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
+});
+
+$("#topicSearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("topic");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
+});
+
 
 // HORIZONTAL SCROLL
 const scrollContainer = document.getElementById("timeline");
