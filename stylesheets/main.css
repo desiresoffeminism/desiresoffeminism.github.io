@@ -6,12 +6,21 @@
 */
 /* ---- VARIABLES ---- */
 /* ---- MAIN STYLING ---- */
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   background: #1c1a24;
   color: #e9ebf8;
   font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 30px;
+}
+body ul {
+  list-style-type: none;
 }
 
 h1,
@@ -21,6 +30,7 @@ h4,
 h5,
 h6 {
   font-family: "Crimson Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 600;
 }
 
 ::selection {
@@ -53,7 +63,6 @@ h6 {
   background-color: #e9ebf8;
 }
 .sidenav .main-buttons {
-  list-style-type: none;
   margin: 64px 0;
   padding: 0;
   color: #1c1a24;
@@ -95,11 +104,11 @@ h6 {
 .hidden {
   width: 0;
   height: 100%;
-  padding: 64px 0;
+  padding: 64px 0px 0px 0px;
   position: absolute;
   top: 0;
   right: 0;
-  overflow: hidden;
+  overflow: auto;
   list-style-type: none;
   background-color: #d3d6e7;
   transition: all 0.3s ease-in-out;
@@ -110,17 +119,110 @@ h6 {
 .hidden li:hover, .hidden li:active, .hidden li:focus {
   background-color: #c6cae0;
 }
-.hidden li:hover a, .hidden li:active a, .hidden li:focus a {
+.hidden li:hover a,
+.hidden li:hover svg, .hidden li:active a,
+.hidden li:active svg, .hidden li:focus a,
+.hidden li:focus svg {
+  color: #775fe3;
+}
+.hidden li div.drop-search,
+.hidden li ul.dropped {
+  display: none;
+}
+
+.hidden .dropper {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.hidden li svg {
+  position: absolute;
+  top: 4px;
+  font-size: 18px;
+  color: #1c1a24;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.hidden li svg.submenu-icon {
+  right: 0px;
+  left: auto;
+  font-size: 16px;
+}
+
+.hidden li.open .dropper {
   color: #775fe3;
 }
 
-body {
-  line-height: 30px;
+.hidden li.open svg {
+  color: #775fe3;
 }
 
-html,
-body {
-  height: 100%;
+.hidden li.open svg.submenu-icon {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.dropped {
+  display: none;
+}
+.dropped input[type=text] {
+  border: none;
+  border-bottom: 2px solid #775fe3;
+  margin-top: 12px;
+  padding-bottom: 6px;
+  width: 90%;
+  font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: transparent;
+}
+.dropped input[type=text]:focus {
+  outline: none;
+}
+
+.dropdown {
+  padding-left: 0;
+}
+
+::placeholder {
+  color: #1c1a24;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #1c1a24;
+}
+
+::-ms-input-placeholder {
+  color: #1c1a24;
+}
+
+.dropped ul.dropdown li.dropdown-item {
+  font-family: "Mulish", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+}
+
+li.dropdown-item {
+  display: block;
+  text-decoration: none;
+  color: #d9d9d9;
+  padding: 12px;
+  padding-left: 0;
+  -webkit-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+.dropdown-item:hover {
+  background: #b63b4d;
+  color: #FFF;
 }
 
 #logo-menu {
@@ -144,7 +246,7 @@ body {
 #timeline #dataList {
   display: flex;
   position: absolute;
-  left: 5%;
+  left: 2%;
   top: 48vh;
 }
 #timeline #dataList .data-item {
@@ -226,6 +328,9 @@ body {
   padding-right: 15px;
   text-align: justify;
 }
+#timeline #dataList .list-item-data.expand .row2 .description {
+  line-height: 25px;
+}
 #timeline #dataList .list-item-data.expand .row2 .item-meta {
   padding-left: 0;
 }
@@ -233,6 +338,7 @@ body {
   font-family: "Crimson Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 600;
   font-size: 20px;
+  padding-top: 10px;
 }
 #timeline #dataList .list-item-data.expand .row2 .item-meta .tags {
   padding-left: 0;
@@ -251,6 +357,9 @@ body {
   background: none;
   padding: 5px 5px 5px 5px;
   border-bottom: 1px solid #4d4863;
+}
+#timeline #dataList .list-item-data.expand .row2 .item-meta .citation li:last-child {
+  border: none;
 }
 #timeline #dataList .list-item-data.expand .row2 .meta-tag {
   display: inline-block;

@@ -1,16 +1,28 @@
-// TIMELINE DATA
 $(document).ready(function () {
   console.log("Document ready");
 });
 
+// ----- TIMELINE DATA -----
 // READ AND DISPLAY TIMELINE DATA
 // inspired by Anant Anand Gupta
 $.getJSON("data/timeline.json", function (data) {
   timeline_data = data;
   listItemString = $(".list-item").html();
   emptyArray = [""];
+  countries_list = [];
+  topics_list = [];
 
+  // build timeline
   timeline_data.forEach(buildNewList);
+
+  // build filter dropdowns
+  timeline_data.forEach(fetchSearchTags);
+  // TODO: display full country names with country codes
+  countries_list.sort();
+  topics_list.sort();
+  $("#countryDrop").append(dropdownHTML(countries_list));
+  $("#topicDrop").append(dropdownHTML(topics_list));
+
 
   // filling in item info from JSON data
   function buildNewList(item) {
@@ -100,6 +112,162 @@ $.getJSON("data/timeline.json", function (data) {
 
     return li_string;
   }
+
+  // getting unique country codes & topics
+  function fetchSearchTags(item) {
+    if (item.country != emptyArray) {
+      split_country = item.country.split(', ');
+
+      split_country.forEach(function (i) {
+        if (!countries_list.includes(i)) {
+          countries_list.push(i);
+        }
+      })
+    }
+
+    if (item.topic != emptyArray) {
+      split_topic = item.topic.split(', ');
+
+      split_topic.forEach(function (i) {
+        if (!topics_list.includes(i)) {
+          topics_list.push(i);
+        }
+      })
+    }
+  }
+
+  // transforms dropdown contents to <li> elements 
+  function dropdownHTML(array) {
+    li_string = "";
+
+    li_array = array.map(x => "<li class=\"dropdown-item\">" + x + "</li>");
+    li_array.forEach(function (i) {
+      li_string += i;
+    })
+
+    return li_string;
+  }
+});
+
+// ----- SITE FUNCTIONALITY -----
+// NAV ACCORDION DROPDOWN
+// inspired by fainder
+$(function () {
+  var Accordion = function (el, multiple) {
+    this.el = el || {};
+    this.multiple = multiple || false;
+
+    var droppers = this.el.find('.dropper');
+    droppers.on('click', {
+      el: this.el,
+      multiple: this.multiple
+    }, this.dropdown)
+  }
+
+  Accordion.prototype.dropdown = function (e) {
+    var $el = e.data.el;
+    $this = $(this),
+      $next = $this.next();
+
+    $next.slideToggle();
+    $this.parent().toggleClass('open');
+
+    // if new submenu is toggled open, close others
+    if (!e.data.multiple) {
+      $el.find('.dropped').not($next).slideUp().parent().removeClass('open');
+    };
+  }
+
+  var accordion = new Accordion($('#hasAccordions'), false);
+});
+
+// NAV DROPDOWN SEARCHES
+function cDropdownSearch() {
+  var input, filter, search_container, search_item, country, i;
+  input = document.getElementById("countrySearch");
+  filter = input.value.toLowerCase();
+  search_container = document.getElementById("countryDrop");
+  search_item = search_container.getElementsByClassName("dropdown-item");
+
+  for (i = 0; i < search_item.length; i++) {
+    country = search_item[i];
+    if (country.innerText.toLowerCase().indexOf(filter) > -1) {
+      search_item[i].style.display = "";
+    } else {
+      search_item[i].style.display = "none";
+    }
+  }
+}
+
+function tDropdownSearch() {
+  var input, filter, search_container, search_item, topic, i;
+  input = document.getElementById("topicSearch");
+  filter = input.value.toUpperCase();
+  search_container = document.getElementById("topicDrop");
+  search_item = search_container.getElementsByClassName("dropdown-item");
+
+  for (i = 0; i < search_item.length; i++) {
+    topic = search_item[i];
+    if (topic.innerText.toUpperCase().indexOf(filter) > -1) {
+      search_item[i].style.display = "";
+    } else {
+      search_item[i].style.display = "none";
+    }
+  }
+}
+
+// TAG SEARCHES
+function toggleVisiblity(input_value, class_contents) {
+  for (i = 0; i < class_contents.length - 1; i++) {
+    var contents = class_contents[i].textContent.toLowerCase();
+
+    if (contents.includes(input_value)) {
+      class_contents[i].closest(".data-item").style.display = "";
+    } else {
+      class_contents[i].closest(".data-item").style.display = "none";
+    }
+  }
+}
+
+$("#generalSearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("data-item");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
+});
+
+$("#countrySearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("country");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
+});
+
+
+$("#peopleSearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("people");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
+});
+
+$("#topicSearch").on("keydown", function search(e) {
+  var class_contents = document.getElementsByClassName("topic");
+
+  if (e.keyCode === 13) {
+    var input_value = $(this).val().toLowerCase();
+
+    toggleVisiblity(input_value, class_contents);
+  }
 });
 
 
@@ -123,9 +291,8 @@ $(document).mousemove(function () {
 
 // EXPAND TIMELINE ITEM
 // inspired by Nicole Oakes
+// TODO: add method of closing info box by clicking off of it
 $(document).on('click', '.timeline-icon', function () {
   $(this).toggleClass("expand");
   $(this).next().next().toggleClass('expand');
 });
-
-// TODO: add method of closing info box by clicking off of it
