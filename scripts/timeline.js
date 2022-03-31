@@ -216,7 +216,8 @@ function tDropdownSearch() {
   }
 }
 
-// TAG SEARCHES
+// TODO: filter on dropdown item click
+// SEARCHES
 function toggleVisiblity(input_value, class_contents) {
   for (i = 0; i < class_contents.length - 1; i++) {
     var contents = class_contents[i].textContent.toLowerCase();

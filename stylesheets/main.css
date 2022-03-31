@@ -437,4 +437,125 @@ li.dropdown-item {
   background-color: #4d4863;
 }
 
+/* ---- SUBPAGE STYLING ---- */
+#middle {
+  position: absolute;
+  width: 800px;
+  height: 500px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  border: 1px solid #775fe3;
+}
+
+#pageContent {
+  float: right;
+  width: 538px;
+  height: 428px;
+  padding: 32px 36px 32px 43px;
+  overflow-x: auto;
+  background: #1c1a24;
+  border-top: 4px solid #1c1a24;
+  border-bottom: 4px solid #1c1a24;
+}
+
+#pageContentContainer {
+  padding: 0px 15px;
+}
+#pageContentContainer h1,
+#pageContentContainer h2 {
+  margin-top: 0px;
+}
+#pageContentContainer h1 {
+  font-size: 26px;
+  text-transform: uppercase;
+}
+#pageContentContainer span.page-h1 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #775fe3;
+}
+#pageContentContainer h2 {
+  font-size: 22px;
+  font-style: italic;
+}
+#pageContentContainer p {
+  font-size: 15px;
+}
+#pageContentContainer a {
+  text-decoration: none;
+  color: #775fe3;
+}
+#pageContentContainer a:hover {
+  color: #a29ee6;
+}
+
+#pageLogo {
+  padding: 42px;
+  text-align: center;
+  background: #1c1a24;
+}
+
+#pageLogoBorder {
+  width: 90px;
+  height: 90px;
+  border: 1px solid #775fe3;
+}
+#pageLogoBorder img {
+  width: 70px;
+  margin-top: 10px;
+}
+
+#pageSidebar {
+  float: left;
+  width: 104px;
+  height: 100%;
+  padding: 20px 35px 15px 35px;
+  margin-top: 2px;
+  text-align: center;
+  background: #1c1a24;
+  border-bottom: 10px solid #1c1a24;
+}
+
+#pageNavLinks {
+  display: block;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  list-style-type: none;
+}
+#pageNavLinks li {
+  padding: 5px 0px;
+}
+#pageNavLinks li a {
+  display: block;
+  padding: 14px 0px;
+  font-family: "Crimson Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #e9ebf8;
+}
+#pageNavLinks li a:hover {
+  color: #775fe3;
+}
+
+/* ---- Page Scrollbars ---- */
+#pageContent::-webkit-scrollbar {
+  width: 18px;
+  height: 3px;
+  background: #1c1a24;
+}
+
+#pageContent::-webkit-scrollbar-thumb {
+  border: 8px solid #1c1a24;
+  background-color: #775fe3;
+}
+
+#pageContent::-webkit-scrollbar-track {
+  border: 2px;
+  background-color: #1c1a24;
+}
+
 /*# sourceMappingURL=main.css.map */
