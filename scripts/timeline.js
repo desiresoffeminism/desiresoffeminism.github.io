@@ -1,6 +1,16 @@
+// This Source Code Form is subject to the terms of
+// the Mozilla Public License, v.2.0. If a copy of
+// the MPL was not distributed with this file, You
+// can obtain one at http://mozilla.org/MPL/2.0/.
+
+// TODO: Refactor code, especially the searches
+
 $(document).ready(function () {
   console.log("Document ready");
 });
+
+// ----- CONST VARIABLES -----
+const scrollContainer = document.getElementById("timeline");
 
 // ----- TIMELINE DATA -----
 // READ AND DISPLAY TIMELINE DATA
@@ -173,6 +183,7 @@ $(function () {
     $this.parent().toggleClass('open');
 
     // if new submenu is toggled open, close others
+    // TODO: add this functionality to timeline items
     if (!e.data.multiple) {
       $el.find('.dropped').not($next).slideUp().parent().removeClass('open');
     };
@@ -215,14 +226,24 @@ function tDropdownSearch() {
     }
   }
 }
-
-// TODO: filter on dropdown item click
 // SEARCHES
 function toggleVisiblity(input_value, class_contents) {
   for (i = 0; i < class_contents.length - 1; i++) {
     var contents = class_contents[i].textContent.toLowerCase();
 
     if (contents.includes(input_value)) {
+      class_contents[i].closest(".data-item").style.display = "";
+    } else {
+      class_contents[i].closest(".data-item").style.display = "none";
+    }
+  }
+}
+
+function dropToggleVisiblity(drop_value, class_contents) {
+  for (i = 0; i < class_contents.length - 1; i++) {
+    var contents = class_contents[i].textContent.toLowerCase();
+
+    if (contents.includes(drop_value)) {
       class_contents[i].closest(".data-item").style.display = "";
     } else {
       class_contents[i].closest(".data-item").style.display = "none";
@@ -250,6 +271,13 @@ $("#countrySearch").on("keydown", function search(e) {
   }
 });
 
+$(document).on("click", ".dropdown-item", function () {
+  var class_contents = document.getElementsByClassName("country");
+  var drop_value = this.textContent.toLowerCase();
+
+  dropToggleVisiblity(drop_value, class_contents);
+});
+
 
 $("#peopleSearch").on("keydown", function search(e) {
   var class_contents = document.getElementsByClassName("people");
@@ -271,15 +299,19 @@ $("#topicSearch").on("keydown", function search(e) {
   }
 });
 
+$(document).on("click", ".dropdown-item", function () {
+  var class_contents = document.getElementsByClassName("topic");
+  var drop_value = this.textContent.toLowerCase();
+
+  dropToggleVisiblity(drop_value, class_contents);
+});
+
 
 // HORIZONTAL SCROLL
-const scrollContainer = document.getElementById("timeline");
-
 var horizontalScroll = function (event) {
   scrollContainer.scrollLeft += event.deltaY;
 }
 
-// TODO: Add vertical scroll inside timeline item
 // VERTICAL SCROLL IN TIMELINE ITEM
 $(document).mousemove(function () {
   if ($(".expand:hover").length != 0) {
@@ -293,7 +325,7 @@ $(document).mousemove(function () {
 // EXPAND TIMELINE ITEM
 // inspired by Nicole Oakes
 // TODO: add method of closing info box by clicking off of it
-$(document).on('click', '.timeline-icon', function () {
+$(document).on("click", ".timeline-icon", function () {
   $(this).toggleClass("expand");
-  $(this).next().next().toggleClass('expand');
+  $(this).next().next().toggleClass("expand");
 });
