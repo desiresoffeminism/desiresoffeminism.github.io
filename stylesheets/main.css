@@ -482,12 +482,32 @@ li.dropdown-item {
 #pageContentContainer p {
   font-size: 15px;
 }
+#pageContentContainer ol {
+  padding: 0px 0px 0px 15px;
+}
+#pageContentContainer table {
+  padding: 0px;
+  border-collapse: collapse;
+}
+#pageContentContainer table th,
+#pageContentContainer table td {
+  padding: 0px 10px 0px 10px;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid #33313b;
+}
+#pageContentContainer table th {
+  font-family: "Crimson Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+#pageContentContainer table td {
+  font-size: 14px;
+}
 #pageContentContainer a {
   text-decoration: none;
-  color: #775fe3;
+  color: #a29ee6;
 }
 #pageContentContainer a:hover {
-  color: #a29ee6;
+  color: #775fe3;
 }
 
 #pageLogo {
