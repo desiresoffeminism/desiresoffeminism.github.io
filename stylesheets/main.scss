@@ -76,6 +76,15 @@ h6 {
     font-weight: 600;
 }
 
+a {
+    text-decoration: none;
+    color: $accent2;
+
+    &:hover {
+        color: $accent;
+    }
+}
+
 ::selection {
     background: $accent;
     color: $fg;

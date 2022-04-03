@@ -33,6 +33,14 @@ h6 {
   font-weight: 600;
 }
 
+a {
+  text-decoration: none;
+  color: #a29ee6;
+}
+a:hover {
+  color: #775fe3;
+}
+
 ::selection {
   background: #775fe3;
   color: #e9ebf8;

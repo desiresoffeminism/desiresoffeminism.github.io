@@ -99,10 +99,10 @@ $.getJSON("data/timeline.json", function (data) {
 
   // transforms cell contents to <li> elements
   function buildInnerUl(column) {
-    cellData = column.split(', ');
+    cell_data = column.split(', ');
     li_string = "";
 
-    li_array = cellData.map(x => "<li class=\"meta-tag\">" + x + "</li>");
+    li_array = cell_data.map(x => "<li class=\"meta-tag\">" + x + "</li>");
     li_array.forEach(function (i) {
       li_string += i;
     })
@@ -111,11 +111,25 @@ $.getJSON("data/timeline.json", function (data) {
   }
 
   // same for citations, but separator is different due to them containing commas
+  // also parses the links
   function buildInnerUlCite(column) {
-    cellData = column.split(' -- ');
+    cell_data = column.split(' -- ');
+    url_regex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     li_string = "";
 
-    li_array = cellData.map(x => "<li>" + x + "</li>");
+    if (column.search(url_regex) !== -1) {
+      for (i = 0; i < cell_data.length; i++) {
+        if (cell_data[i].search(url_regex) !== -1) {
+          split_cell_data = cell_data[i].split(". ");
+          citation_url = split_cell_data.pop();
+          citation_link = "<a href=\"" + citation_url + "\">" + citation_url + "</a>";
+
+          cell_data[i] = cell_data[i].replace(url_regex, citation_link);
+        }
+      }
+    }
+
+    li_array = cell_data.map(x => "<li>" + x + "</li>");
     li_array.forEach(function (i) {
       li_string += i;
     })
@@ -271,7 +285,7 @@ $("#countrySearch").on("keydown", function search(e) {
   }
 });
 
-$(document).on("click", ".dropdown-item", function () {
+$(document).on("click", "#countryDrop li.dropdown-item", function () {
   var class_contents = document.getElementsByClassName("country");
   var drop_value = this.textContent.toLowerCase();
 
@@ -299,7 +313,7 @@ $("#topicSearch").on("keydown", function search(e) {
   }
 });
 
-$(document).on("click", ".dropdown-item", function () {
+$(document).on("click", "#topicDrop li.dropdown-item", function () {
   var class_contents = document.getElementsByClassName("topic");
   var drop_value = this.textContent.toLowerCase();
 
