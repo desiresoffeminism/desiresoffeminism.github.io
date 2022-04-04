@@ -61,7 +61,7 @@ $.getJSON("data/timeline.json", function (data) {
 
     // ---- ROW2 ----
     var listItemDesc = $(".description", listItem);
-    listItemDesc.html(item.description);
+    listItemDesc.html(supCite(item.description));
 
     // ---- ROW2 - ITEM-META ----
     // populate <ul>'s with N/A if JSON fields are empty
@@ -97,12 +97,30 @@ $.getJSON("data/timeline.json", function (data) {
     $("#dataList").append(listItem);
   }
 
+  // wraps description citation numbers in <sup> elements
+  function supCite(column) {
+    new_column = column;
+    cite_regex = /(\[[0-9]{1,2},* *[0-9]{0,2}\])/g;
+
+    if (column.search(cite_regex) !== -1) {
+      matches = column.match(cite_regex);
+
+      for (i = 0; i < matches.length; i++) {
+        mapped_matches = "<sup>" + matches[i] + "</sup>";
+        new_column = new_column.replace(matches[i], mapped_matches);
+      }
+    }
+
+    return new_column;
+  }
+
   // transforms cell contents to <li> elements
   function buildInnerUl(column) {
     cell_data = column.split(', ');
     li_string = "";
 
     li_array = cell_data.map(x => "<li class=\"meta-tag\">" + x + "</li>");
+    li_array.sort();
     li_array.forEach(function (i) {
       li_string += i;
     })
