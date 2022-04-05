@@ -338,6 +338,14 @@ $(document).on("click", "#topicDrop li.dropdown-item", function () {
   dropToggleVisiblity(drop_value, class_contents);
 });
 
+function resetFilters() {
+  var data_items = document.querySelectorAll(".data-item");
+
+  data_items.forEach(item => {
+    item.style.display = "";
+  })
+}
+
 
 // HORIZONTAL SCROLL
 var horizontalScroll = function (event) {

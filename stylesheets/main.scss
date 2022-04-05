@@ -249,6 +249,22 @@ a {
     transform: rotate(180deg);
 }
 
+#resetFilters {
+    margin: 16px 24px;
+    border-bottom: 1px solid $bg;
+    color: $bg;
+    transition: all 0.15s ease-in;
+
+    &:hover {
+        border-bottom: 1px solid $accent;
+        color: $accent;
+    }
+
+    &:active {
+        letter-spacing: 3px;
+    }
+}
+
 .dropped {
     display: none;
 
