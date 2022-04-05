@@ -334,7 +334,7 @@ li.dropdown-item {
   overflow-y: auto;
   max-height: 150px;
   padding-right: 15px;
-  text-align: justify;
+  text-align: left;
 }
 #timeline #dataList .list-item-data.expand .row2 .description {
   line-height: 25px;
