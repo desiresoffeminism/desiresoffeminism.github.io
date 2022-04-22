@@ -637,6 +637,15 @@ li.dropdown-item {
         padding: 0px 0px 0px 15px;
     }
 
+    ul {
+        padding: 0px 0px 0px 15px;
+        list-style-type: square;
+
+        li {
+            padding-bottom: 10px;
+        }
+    }
+
     table {
         padding: 0px;
         border-collapse: collapse;
@@ -709,7 +718,7 @@ li.dropdown-item {
 
     li a {
         display: block;
-        padding: 14px 0px;
+        padding: 8px 0px;
         font-family: $font-header;
         font-size: 20px;
         font-weight: 600;
