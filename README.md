@@ -7,7 +7,14 @@ It can be viewed at [desiresoffeminism.github.io](https://desiresoffeminism.gith
 ## Table of Contents <!-- omit in toc -->
 
 - [Contributing](#contributing)
+- [License](#license)
 
 ## Contributing
 
 For now, contributions are mostly closed as instructions on how to contribute are being written. If, however, you'd like to send in or notify us of resources which can help expand the timeline's contents, please [contact us](mailto:dof.contact@elrimer.com).
+
+## License
+
+This content is licensed under the [MPL License Version 2.0](https://www.mozilla.org/en-US/MPL/2.0/). You can [see here](https://www.mozilla.org/en-US/MPL/2.0/FAQ/) for the license FAQ.
+
+Please note that some dependencies/minor content is licensed or inspired by content licensed under the [MIT License](https://opensource.org/licenses/MIT).
